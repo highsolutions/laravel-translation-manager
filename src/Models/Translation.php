@@ -1,6 +1,6 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Models;
+namespace Imtigger\TranslationManager\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;

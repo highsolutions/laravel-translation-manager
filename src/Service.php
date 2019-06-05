@@ -1,9 +1,9 @@
 <?php
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
-use HighSolutions\TranslationManager\Manager;
-use HighSolutions\TranslationManager\Models\Translation;
+use Imtigger\TranslationManager\Manager;
+use Imtigger\TranslationManager\Models\Translation;
 
 class Service
 {

@@ -1,9 +1,9 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Console;
+namespace Imtigger\TranslationManager\Console;
 
 use Illuminate\Console\Command;
-use HighSolutions\TranslationManager\Manager;
+use Imtigger\TranslationManager\Manager;
 
 class ResetCommand extends Command {
 
@@ -21,7 +21,7 @@ class ResetCommand extends Command {
      */
     protected $description = 'Delete all translations from the database';
 
-    /** @var \HighSolutions\TranslationManager\Manager  */
+    /** @var \Imtigger\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

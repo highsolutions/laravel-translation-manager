@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Console;
+namespace Imtigger\TranslationManager\Console;
 
-use HighSolutions\TranslationManager\Manager;
+use Imtigger\TranslationManager\Manager;
 use Illuminate\Console\Command;
 
 class SuffixCommand extends Command 
@@ -22,7 +22,7 @@ class SuffixCommand extends Command
      */
     protected $description = 'Add locale suffix to all translations that are the same as basic one.';
 
-    /** @var \HighSolutions\TranslationManager\Manager  */
+    /** @var \Imtigger\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

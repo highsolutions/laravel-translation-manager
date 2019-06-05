@@ -3,8 +3,6 @@ Laravel Translation Manager
 
 Easy management of translations in Laravel.
 
-![Laravel-Translation-Manager by HighSolutions](https://raw.githubusercontent.com/highsolutions/laravel-translation-manager/master/intro.jpg)
-
 Installation
 ------------
 
@@ -12,7 +10,7 @@ Add the following line to the `require` section of your Laravel webapp's `compos
 
 ```javascript
     "require": {
-        "highsolutions/laravel-translation-manager": "0.4.x"
+        "Imtigger/laravel-translation-manager": "0.4.x"
     }
 ```
 
@@ -23,14 +21,14 @@ Then, update `config/app.php` by adding an entry for the service provider:
 ```php
 'providers' => [
     // ...
-    HighSolutions\TranslationManager\ManagerServiceProvider::class,
+    Imtigger\TranslationManager\ManagerServiceProvider::class,
 ];
 ```
 
 Next, publish all package resources:
 
 ```bash
-    php artisan vendor:publish --provider="HighSolutions\TranslationManager\ManagerServiceProvider"
+    php artisan vendor:publish --provider="Imtigger\TranslationManager\ManagerServiceProvider"
 ```
 
 This will add to your project:
@@ -71,7 +69,7 @@ Configuration
 
 | Setting name             | Description                                                             | Default value                                                                                                        |
 |--------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| route                    | Route declaration (prefix, namespace, middlewares etc.)                 | [,'prefix' => 'translations', 'namespace' => 'HighSolutions\TranslationManager', 'middleware' => [,'web', 'auth',],] |
+| route                    | Route declaration (prefix, namespace, middlewares etc.)                 | [,'prefix' => 'translations', 'namespace' => 'Imtigger\TranslationManager', 'middleware' => [,'web', 'auth',],] |
 | delete_enabled           | Enable deletion of translations                                         | true                                                                                                                 |
 | exclude_groups           | Exclude specific file groups (like validation, pagination, routes etc.) | []                                                                                                                   |
 | exclude_langs            | Exclude specific langs and directories (like vendor and en, etc.) | []                                                                                                                   |
@@ -160,7 +158,7 @@ In your config/app.php, comment out the original TranslationServiceProvider and 
 
 ```php
     //'Illuminate\Translation\TranslationServiceProvider',
-    'HighSolutions\TranslationManager\TranslationServiceProvider',
+    'Imtigger\TranslationManager\TranslationServiceProvider',
 ```
 
 This will extend the Translator and will create a new database entry, whenever a key is not found, so you have to visit the pages that use them.
@@ -177,7 +175,7 @@ Update `config/app.php` by adding an entry for the service provider (another one
 ```php
 'providers' => [
     // ...
-    HighSolutions\TranslationManager\TranslationServiceProvider::class,
+    Imtigger\TranslationManager\TranslationServiceProvider::class,
 ];
 ```
 
@@ -369,4 +367,4 @@ Credits
 
 This package was originally created by [Barry vd. Heuvel](https://github.com/barryvdh) and is available here: [laravel-feed](https://github.com/barryvdh/laravel-translation-manager).
 
-Currently is developed by [HighSolutions](http://highsolutions.pl), software house from Poland in love in Laravel.
+Currently is developed by [Imtigger](http://Imtigger.pl), software house from Poland in love in Laravel.

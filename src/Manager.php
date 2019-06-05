@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
-use HighSolutions\TranslationManager\Models\Translation;
+use Imtigger\TranslationManager\Models\Translation;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;

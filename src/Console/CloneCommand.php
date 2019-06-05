@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Console;
+namespace Imtigger\TranslationManager\Console;
 
-use HighSolutions\TranslationManager\Manager;
+use Imtigger\TranslationManager\Manager;
 use Illuminate\Console\Command;
 
 class CloneCommand extends Command 
@@ -22,7 +22,7 @@ class CloneCommand extends Command
      */
     protected $description = 'Clone translations from one language to another';
 
-    /** @var \HighSolutions\TranslationManager\Manager  */
+    /** @var \Imtigger\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

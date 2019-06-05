@@ -12,7 +12,7 @@ return array(
     */
     'route' => [
         'prefix' => 'translations',
-        'namespace' => 'HighSolutions\TranslationManager',
+        'namespace' => 'Imtigger\TranslationManager',
         'middleware' => [
 	        'web',
 	        'auth',
