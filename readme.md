@@ -303,68 +303,19 @@ You can use this helper like this:
 
 Do not use this inside of non-clickable elements (title attribute, alt attributes etc.). To launch popup inside link, click on border, not text.
 
-Changelog
----------
-
-0.6.0
-* No STRICT_MODE needed anymore
-
-0.5.1
-* Fix searching translations
-
-0.5.0
-* Change the views path
-
-0.4.7
-* remove closures in config file
-
-0.4.5
-* Laravel 5.6 support
-
-0.4.4
-* Fix translation title popup
-
-0.4.3
-* New configurations (popup placement and basic language)
-* Update documentation about necessary JS scripts
-
-0.4.0
-
-* New commands: clone and suffix
-* Improve export command
-
-0.3.7
-
-* New configuration option to exclude langs
-
-0.3.6
-
-* Support auto-discovery and Laravel 5.5
-
-0.3.0
-
-* Support for subdirectories
-* Support for array translations
-* New design
-* Permission management
-* Translations for view
-* Live editing
-
-0.2.0
-
-* Barryvdh version of package
-
 Roadmap
 -------
 
-* Duplicate translations of one locale to another with locale suffix.
 * Detection of incorrect files.
-* Support vendor translations files.
+* Auto generate placeholder from key
+* Auto Tradition Simplifed <=> Simplifed Chinese convertion
 * Unit tests!
 
 Credits
 -------
 
-This package was originally created by [Barry vd. Heuvel](https://github.com/barryvdh) and is available here: [laravel-feed](https://github.com/barryvdh/laravel-translation-manager).
+This package was originally created by [Barry vd. Heuvel](https://github.com/barryvdh) and is available here: [laravel-translation-manager](https://github.com/barryvdh/laravel-translation-manager)
 
-Currently is developed by [Imtigger](http://Imtigger.pl), software house from Poland in love in Laravel.
+And then developed by [HighSolutions](https://github.com/highsolutions) and is available here: [laravel-translation-manager](https://github.com/highsolutions/laravel-translation-manager)
+
+Currently is developed by [Imtigger](http://tiger-workshop.com)
