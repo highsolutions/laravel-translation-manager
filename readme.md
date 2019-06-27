@@ -150,6 +150,18 @@ The suffix command analyzes all translations from new locale (langNew parameter)
     php artisan translations:sufix langOriginal langNew
 ```
 
+### Generate command
+
+The generate command find empty value in the database with specified locale (default en), and generate value using last part of translation key.
+
+Example:
+- "backend.label.order_number" becomes "Order Number"
+- "backend.action-button.submit-form" becomes "Submit Form"
+
+```bash
+    php artisan translations:generate
+```
+
 ### Detect missing translations
 
 Most translations can be found by using the Find command (see above), but in case you have dynamic keys (variables/automatic forms etc), it can be helpful to 'listen' to the missing translations.
