@@ -63,7 +63,7 @@ class Translator extends LaravelTranslator
      */
     public function transEditable($key, array $replace = [], $locale = null, $fallback = true)
     {
-        $translation = parent::get($key, $replace, $locale, $fallback);
+        $translation = self::get($key, $replace, $locale, $fallback);
         if (isLiveTranslationEnabled() == false) {
             // user is not logged or he hasn't enabled inline translations or we are on translations page
             return $translation;
