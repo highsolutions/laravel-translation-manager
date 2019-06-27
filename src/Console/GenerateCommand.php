@@ -13,7 +13,11 @@ class GenerateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'translations:generate {--import : Import translation before generating} {--export : Export translation immediately} {--group=backend : Translation group}';
+    protected $signature = 'translations:generate 
+    {--import : Import translation before generating} 
+    {--export : Export translation immediately} 
+    {--locale=en : Translation locale}
+    {--group=backend : Translation group}';
 
     /**
      * The console command description.
@@ -42,7 +46,7 @@ class GenerateCommand extends Command
             $this->call('translations:import');
         }
         
-        $count = $this->manager->generateTranslations($this->option('group'));
+        $count = $this->manager->generateTranslations($this->option('locale'), $this->option('group'));
         $this->info("Done generating translations for {$count} records.");
         
         if ($this->option('export')) {
