@@ -260,5 +260,19 @@ class Manager
             ]);
         })->count();
     }
+    
+    public function generateTranslations($group)
+    {
+        $translations = Translation::whereGroup($group)->whereStatus(0)->whereNull('value')->get();
+        
+        foreach ($translations as $translation) {
+            $value = substr($translation->key, strrpos($translation->key, '.') + 1);
+            $value = str_replace(['_', '-'], [' '], $value);
+            $value = ucwords($value);
+            $value = str_replace(['Id'], ['ID'], $value);
+            $translation->update(['value' => $value]);
+        }
 
+        return $translations->count();
+    }
 }

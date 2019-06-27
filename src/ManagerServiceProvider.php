@@ -9,6 +9,7 @@ use Imtigger\TranslationManager\Console\FindCommand;
 use Imtigger\TranslationManager\Console\ImportCommand;
 use Imtigger\TranslationManager\Console\ResetCommand;
 use Imtigger\TranslationManager\Console\SuffixCommand;
+use Imtigger\TranslationManager\Console\GenerateCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
@@ -60,6 +61,7 @@ class ManagerServiceProvider extends ServiceProvider {
             'clean' => CleanCommand::class,
             'clone' => CloneCommand::class,
             'suffix' => SuffixCommand::class,
+            'generate' => GenerateCommand::class,
         ];
     }
 
@@ -158,6 +160,7 @@ class ManagerServiceProvider extends ServiceProvider {
             'command.translation-manager.clean',
             'command.translation-manager.clone',
             'command.translation-manager.suffix',
+            'command.translation-manager.generate',
         ];
 	}
 
