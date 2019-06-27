@@ -152,15 +152,22 @@ The suffix command analyzes all translations from new locale (langNew parameter)
 
 ### Generate command
 
-The generate command find empty value in the database with specified locale (default en), and generate value using last part of translation key.
+The generate command find empty value in the database with specified locale (default en), and generate value using last part of the translation key. Best used with "Detect missing translations".
 
 Example:
 - "backend.label.order_number" becomes "Order Number"
 - "backend.action-button.submit-form" becomes "Submit Form"
 
 ```bash
-    php artisan translations:generate
+    php artisan translations:generate [--import] [--export] [--group=backend] [--locale=en]
 ```
+
+Options:
+- --import           Import translation before generating
+- --export           Export translation immediately
+- --locale[=LOCALE]  Translation locale [default: "en"]
+- --group[=GROUP]    Translation group [default: "backend"]
+
 
 ### Detect missing translations
 
