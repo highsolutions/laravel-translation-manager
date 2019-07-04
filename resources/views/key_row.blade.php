@@ -9,7 +9,7 @@
 @endphp
 @if(is_array($translation) && $isCatalog)
 <tr class="empty" data-base="{{ $parent_key . $key }}">
-    <td colspan="{{ 1 + sizeof($locales) + $deleteEnabled }}">{{ str_repeat("&nbsp;", $indent * 4) . $key }}</td>
+    <td colspan="{{ 1 + sizeof($locales) + $deleteEnabled }}">{!! str_repeat("&nbsp;", $indent * 4) . $key !!}</td>
 </tr>
     @foreach($translation as $key2 => $value2)
         @include('translation-manager::key_row', [
@@ -21,7 +21,7 @@
     @endforeach
 @else
 <tr data-parent="{{ rtrim($parent_key, '.') }}" id="{{ $parent_key . $key }}">
-    <td>{{ str_repeat("&nbsp;", $indent * 4) . $key }}</td>
+    <td>{!! str_repeat("&nbsp;", $indent * 4) . $key !!}</td>
     @foreach($locales as $locale)
         @php $t = isset($translation[$locale]) ? $translation[$locale] : null; @endphp
         <td>
@@ -49,3 +49,4 @@
     @endif
 </tr>
 @endif
+

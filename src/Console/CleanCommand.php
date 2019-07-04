@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Console;
+namespace Imtigger\TranslationManager\Console;
 
-use HighSolutions\TranslationManager\Manager;
+use Imtigger\TranslationManager\Manager;
 use Illuminate\Console\Command;
 
 class CleanCommand extends Command 
@@ -22,7 +22,7 @@ class CleanCommand extends Command
      */
     protected $description = 'Clean empty translations';
 
-    /** @var \HighSolutions\TranslationManager\Manager  */
+    /** @var \Imtigger\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

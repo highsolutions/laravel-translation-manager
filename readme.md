@@ -3,8 +3,6 @@ Laravel Translation Manager
 
 Easy management of translations in Laravel.
 
-![Laravel-Translation-Manager by HighSolutions](https://raw.githubusercontent.com/highsolutions/laravel-translation-manager/master/intro.jpg)
-
 Installation
 ------------
 
@@ -12,7 +10,7 @@ Add the following line to the `require` section of your Laravel webapp's `compos
 
 ```javascript
     "require": {
-        "highsolutions/laravel-translation-manager": "0.4.x"
+        "Imtigger/laravel-translation-manager": "0.4.x"
     }
 ```
 
@@ -23,14 +21,14 @@ Then, update `config/app.php` by adding an entry for the service provider:
 ```php
 'providers' => [
     // ...
-    HighSolutions\TranslationManager\ManagerServiceProvider::class,
+    Imtigger\TranslationManager\ManagerServiceProvider::class,
 ];
 ```
 
 Next, publish all package resources:
 
 ```bash
-    php artisan vendor:publish --provider="HighSolutions\TranslationManager\ManagerServiceProvider"
+    php artisan vendor:publish --provider="Imtigger\TranslationManager\ManagerServiceProvider"
 ```
 
 This will add to your project:
@@ -71,7 +69,7 @@ Configuration
 
 | Setting name             | Description                                                             | Default value                                                                                                        |
 |--------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| route                    | Route declaration (prefix, namespace, middlewares etc.)                 | [,'prefix' => 'translations', 'namespace' => 'HighSolutions\TranslationManager', 'middleware' => [,'web', 'auth',],] |
+| route                    | Route declaration (prefix, namespace, middlewares etc.)                 | [,'prefix' => 'translations', 'namespace' => 'Imtigger\TranslationManager', 'middleware' => [,'web', 'auth',],] |
 | delete_enabled           | Enable deletion of translations                                         | true                                                                                                                 |
 | exclude_groups           | Exclude specific file groups (like validation, pagination, routes etc.) | []                                                                                                                   |
 | exclude_langs            | Exclude specific langs and directories (like vendor and en, etc.) | []                                                                                                                   |
@@ -152,6 +150,25 @@ The suffix command analyzes all translations from new locale (langNew parameter)
     php artisan translations:sufix langOriginal langNew
 ```
 
+### Generate command
+
+The generate command find empty value in the database with specified locale (default en), and generate value using last part of the translation key. Best used with "Detect missing translations".
+
+Example:
+- "backend.label.order_number" becomes "Order Number"
+- "backend.action-button.submit-form" becomes "Submit Form"
+
+```bash
+    php artisan translations:generate [--import] [--export] [--group=backend] [--locale=en]
+```
+
+Options:
+- --import           Import translation before generating
+- --export           Export translation immediately
+- --locale[=LOCALE]  Translation locale [default: "en"]
+- --group[=GROUP]    Translation group [default: "backend"]
+
+
 ### Detect missing translations
 
 Most translations can be found by using the Find command (see above), but in case you have dynamic keys (variables/automatic forms etc), it can be helpful to 'listen' to the missing translations.
@@ -160,7 +177,7 @@ In your config/app.php, comment out the original TranslationServiceProvider and 
 
 ```php
     //'Illuminate\Translation\TranslationServiceProvider',
-    'HighSolutions\TranslationManager\TranslationServiceProvider',
+    'Imtigger\TranslationManager\TranslationServiceProvider',
 ```
 
 This will extend the Translator and will create a new database entry, whenever a key is not found, so you have to visit the pages that use them.
@@ -177,7 +194,7 @@ Update `config/app.php` by adding an entry for the service provider (another one
 ```php
 'providers' => [
     // ...
-    HighSolutions\TranslationManager\TranslationServiceProvider::class,
+    Imtigger\TranslationManager\TranslationServiceProvider::class,
 ];
 ```
 
@@ -305,68 +322,19 @@ You can use this helper like this:
 
 Do not use this inside of non-clickable elements (title attribute, alt attributes etc.). To launch popup inside link, click on border, not text.
 
-Changelog
----------
-
-0.6.0
-* No STRICT_MODE needed anymore
-
-0.5.1
-* Fix searching translations
-
-0.5.0
-* Change the views path
-
-0.4.7
-* remove closures in config file
-
-0.4.5
-* Laravel 5.6 support
-
-0.4.4
-* Fix translation title popup
-
-0.4.3
-* New configurations (popup placement and basic language)
-* Update documentation about necessary JS scripts
-
-0.4.0
-
-* New commands: clone and suffix
-* Improve export command
-
-0.3.7
-
-* New configuration option to exclude langs
-
-0.3.6
-
-* Support auto-discovery and Laravel 5.5
-
-0.3.0
-
-* Support for subdirectories
-* Support for array translations
-* New design
-* Permission management
-* Translations for view
-* Live editing
-
-0.2.0
-
-* Barryvdh version of package
-
 Roadmap
 -------
 
-* Duplicate translations of one locale to another with locale suffix.
 * Detection of incorrect files.
-* Support vendor translations files.
+* Auto generate placeholder from key
+* Auto Tradition Simplifed <=> Simplifed Chinese convertion
 * Unit tests!
 
 Credits
 -------
 
-This package was originally created by [Barry vd. Heuvel](https://github.com/barryvdh) and is available here: [laravel-feed](https://github.com/barryvdh/laravel-translation-manager).
+This package was originally created by [Barry vd. Heuvel](https://github.com/barryvdh) and is available here: [laravel-translation-manager](https://github.com/barryvdh/laravel-translation-manager)
 
-Currently is developed by [HighSolutions](http://highsolutions.pl), software house from Poland in love in Laravel.
+And then developed by [HighSolutions](https://github.com/highsolutions) and is available here: [laravel-translation-manager](https://github.com/highsolutions/laravel-translation-manager)
+
+Currently is developed by [Imtigger](http://tiger-workshop.com)

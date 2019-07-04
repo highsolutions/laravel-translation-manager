@@ -1,15 +1,15 @@
 <?php 
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
-use HighSolutions\TranslationManager\Service;
+use Imtigger\TranslationManager\Service;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
 
-    /** @var \HighSolutions\TranslationManager\Service  */
+    /** @var \Imtigger\TranslationManager\Service  */
     protected $service;
 
     public function __construct()

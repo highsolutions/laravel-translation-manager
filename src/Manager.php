@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
-use HighSolutions\TranslationManager\Models\Translation;
+use Imtigger\TranslationManager\Models\Translation;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
@@ -260,5 +260,18 @@ class Manager
             ]);
         })->count();
     }
+    
+    public function generateTranslations($locale, $group)
+    {
+        $translations = Translation::whereLocale($locale)->whereGroup($group)->whereStatus(0)->whereNull('value')->get();
+        
+        foreach ($translations as $translation) {
+            $value = substr($translation->key, strrpos($translation->key, '.') + 1);
+            $value = str_replace(['_', '-'], [' '], $value);
+            $value = ucwords($value);
+            $translation->update(['value' => $value]);
+        }
 
+        return $translations->count();
+    }
 }

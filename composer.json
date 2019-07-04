@@ -1,5 +1,5 @@
 {
-    "name": "highsolutions/laravel-translation-manager",
+    "name": "imtigger/laravel-translation-manager",
     "description": "Manage Laravel Translations",
     "keywords": ["laravel", "translations", "translator", "language"],
     "license": "MIT",
@@ -7,10 +7,14 @@
         {
             "name": "Barry vd. Heuvel",
             "email": "barryvdh@gmail.com"
-        },        
+        },
         {
             "name": "HighSolutions",
             "email": "adam@highsolutions.pl"
+        },
+        {
+            "name": "Tiger Fok",
+            "email": "tiger@tiger-workshop.com"
         }
     ],
     "require": {
@@ -21,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "HighSolutions\\TranslationManager\\": "src/"
+            "Imtigger\\TranslationManager\\": "src/"
         }
     },
     "extra": {
@@ -29,8 +33,8 @@
         "frameworks": ["Laravel 5.7"],
         "laravel": {
             "providers": [
-                "HighSolutions\\TranslationManager\\ManagerServiceProvider",
-                "HighSolutions\\TranslationManager\\TranslationServiceProvider"
+                "Imtigger\\TranslationManager\\ManagerServiceProvider",
+                "Imtigger\\TranslationManager\\TranslationServiceProvider"
             ]            
         }
     },

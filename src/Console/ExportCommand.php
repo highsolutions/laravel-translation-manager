@@ -1,8 +1,8 @@
 <?php 
 
-namespace HighSolutions\TranslationManager\Console;
+namespace Imtigger\TranslationManager\Console;
 
-use HighSolutions\TranslationManager\Manager;
+use Imtigger\TranslationManager\Manager;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -23,7 +23,7 @@ class ExportCommand extends Command
      */
     protected $description = 'Export translations to PHP files';
 
-    /** @var \HighSolutions\TranslationManager\Manager  */
+    /** @var \Imtigger\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

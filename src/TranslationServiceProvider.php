@@ -1,6 +1,6 @@
 <?php 
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
 use Illuminate\Translation\TranslationServiceProvider as BaseTranslationServiceProvider;
 
@@ -24,6 +24,10 @@ class TranslationServiceProvider extends BaseTranslationServiceProvider
             $trans = new Translator($loader, $locale);
 
             $trans->setFallback($app['config']['app.fallback_locale']);
+			
+			if($app->bound('translation-manager')){
+                $trans->setTranslationManager($app['translation-manager']);
+            }
 
             return $trans;
         });

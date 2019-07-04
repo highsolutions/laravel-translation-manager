@@ -1,14 +1,15 @@
 <?php 
 
-namespace HighSolutions\TranslationManager;
+namespace Imtigger\TranslationManager;
 
-use HighSolutions\TranslationManager\Console\CleanCommand;
-use HighSolutions\TranslationManager\Console\CloneCommand;
-use HighSolutions\TranslationManager\Console\ExportCommand;
-use HighSolutions\TranslationManager\Console\FindCommand;
-use HighSolutions\TranslationManager\Console\ImportCommand;
-use HighSolutions\TranslationManager\Console\ResetCommand;
-use HighSolutions\TranslationManager\Console\SuffixCommand;
+use Imtigger\TranslationManager\Console\CleanCommand;
+use Imtigger\TranslationManager\Console\CloneCommand;
+use Imtigger\TranslationManager\Console\ExportCommand;
+use Imtigger\TranslationManager\Console\FindCommand;
+use Imtigger\TranslationManager\Console\ImportCommand;
+use Imtigger\TranslationManager\Console\ResetCommand;
+use Imtigger\TranslationManager\Console\SuffixCommand;
+use Imtigger\TranslationManager\Console\GenerateCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
@@ -60,6 +61,7 @@ class ManagerServiceProvider extends ServiceProvider {
             'clean' => CleanCommand::class,
             'clone' => CloneCommand::class,
             'suffix' => SuffixCommand::class,
+            'generate' => GenerateCommand::class,
         ];
     }
 
@@ -158,6 +160,7 @@ class ManagerServiceProvider extends ServiceProvider {
             'command.translation-manager.clean',
             'command.translation-manager.clone',
             'command.translation-manager.suffix',
+            'command.translation-manager.generate',
         ];
 	}
 
