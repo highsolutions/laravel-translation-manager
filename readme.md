@@ -10,7 +10,7 @@ Add the following line to the `require` section of your Laravel webapp's `compos
 
 ```javascript
     "require": {
-        "Imtigger/laravel-translation-manager": "0.4.x"
+        "Imtigger/laravel-translation-manager": "^0.7"
     }
 ```
 
