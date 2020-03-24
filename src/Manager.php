@@ -8,6 +8,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\Finder;
+use Google\Cloud\Translate\TranslateClient;
 
 class Manager
 {
@@ -270,6 +271,58 @@ class Manager
             $value = str_replace(['_', '-'], ' ', $value);
             $value = ucwords($value);
             $translation->update(['value' => $value]);
+        }
+
+        return $translations->count();
+    }
+    
+    public function translateTranslations($fromLocale, $toLocale, $group)
+    {
+        // Create empty translations for toLocale
+        $emptyBuilder = Translation::select('t1.*')->from(DB::raw('ltm_translations as t1'))
+                                    ->leftJoin(DB::raw('ltm_translations as t2'), function ($join) use ($toLocale) {
+                                        $join->on('t1.key', '=', 't2.key');
+                                        $join->on('t2.locale', '=', DB::raw("'{$toLocale}'"));
+                                    })
+                                    ->where('t1.group', '=', $group)
+                                    ->whereNull('t2.id');
+                                    
+        $emptyTranslations = $emptyBuilder->get();
+        
+        foreach ($emptyTranslations as $translation) {
+            $newTranslation = Translation::create([
+                'status' => 0,
+                'locale' => $toLocale,
+                'group' => $translation->group,
+                'key' => $translation->key,
+                'value' => null
+            ]);
+        }
+        
+        // Find untranslated from toLocale
+        $builder = Translation::select('t1.*', 't2.id as nid')->from(DB::raw('ltm_translations as t1'))
+                            ->join(DB::raw('ltm_translations as t2'), function ($join) use ($toLocale) {
+                                $join->on('t1.key', '=', 't2.key');
+                                $join->on('t2.locale', '=', DB::raw("'{$toLocale}'"));
+                            })
+                            ->where('t1.locale', '=', $fromLocale)
+                            ->where('t1.group', '=', $group)
+                            ->whereNull('t2.value');
+                            
+        $translations = $builder->get();
+        
+        $translator = new TranslateClient([
+            'source' => 'en',
+            'projectId' => config('google-translate.project_id'),
+            'key' => config('google-translate.api_key')
+        ]);
+        
+        foreach ($translations as $translation) {
+            $translatedContent = $translator->translate($translation->value, ['target' => $toLocale]);
+            
+            Translation::whereId($translation->nid)->update([
+                'value' => $translatedContent['text']
+            ]);
         }
 
         return $translations->count();

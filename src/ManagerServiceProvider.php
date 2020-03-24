@@ -10,16 +10,17 @@ use Imtigger\TranslationManager\Console\ImportCommand;
 use Imtigger\TranslationManager\Console\ResetCommand;
 use Imtigger\TranslationManager\Console\SuffixCommand;
 use Imtigger\TranslationManager\Console\GenerateCommand;
+use Imtigger\TranslationManager\Console\TranslateCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class ManagerServiceProvider extends ServiceProvider {
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
     /**
      * Register the service provider.
@@ -62,6 +63,7 @@ class ManagerServiceProvider extends ServiceProvider {
             'clone' => CloneCommand::class,
             'suffix' => SuffixCommand::class,
             'generate' => GenerateCommand::class,
+            'translate' => TranslateCommand::class,
         ];
     }
 
@@ -82,18 +84,18 @@ class ManagerServiceProvider extends ServiceProvider {
     }
 
     /**
-	 * Bootstrap the application events.
-	 *
+     * Bootstrap the application events.
+     *
      * @param  \Illuminate\Routing\Router  $router
-	 * @return void
-	 */
-	public function boot(Router $router)
-	{
+     * @return void
+     */
+    public function boot(Router $router)
+    {
         $this->loadViews();
         $this->loadMigrations();
         $this->loadTranslations();
         $this->loadRoutes($router);
-	}
+    }
 
     protected function loadViews()
     {
@@ -144,14 +146,14 @@ class ManagerServiceProvider extends ServiceProvider {
         return $this->app['config']->get('translation-manager.route', []);
     }
 
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return [
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
             'translation-manager',
             'command.translation-manager.reset',
             'command.translation-manager.import',
@@ -162,6 +164,6 @@ class ManagerServiceProvider extends ServiceProvider {
             'command.translation-manager.suffix',
             'command.translation-manager.generate',
         ];
-	}
+    }
 
 }
