@@ -267,7 +267,7 @@ class Manager
         
         foreach ($translations as $translation) {
             $value = substr($translation->key, strrpos($translation->key, '.') + 1);
-            $value = str_replace(['_', '-'], [' '], $value);
+            $value = str_replace(['_', '-'], ' ', $value);
             $value = ucwords($value);
             $translation->update(['value' => $value]);
         }
