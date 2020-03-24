@@ -21,7 +21,8 @@
         "php": ">=5.4.0",
         "illuminate/console": "5.*|6.*",
         "illuminate/support": "5.*|6.*",
-        "symfony/finder": "*"
+        "symfony/finder": "*",
+        "google/cloud-translate": "^1.7"
     },
     "autoload": {
         "psr-4": {
