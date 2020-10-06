@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\Finder;
 use Illuminate\Support\Arr;
+use Symfony\Component\VarExporter\VarExporter;
 
 class Manager
 {
@@ -160,7 +161,7 @@ class Manager
             ksort($translations);
 
             $path = $this->app->langPath() . '/' . $locale . '/' . $group . '.php';
-            $output = "<?php\n\nreturn ".var_export($translations, true).";\n";
+            $output = "<?php\n\nreturn ".VarExporter::export($translations).";\n";
 
             $this->files->put($path, preg_replace("/ \R/", "\n", $output)); // get rid of trailing spaces before line breaks and store in file
         }
