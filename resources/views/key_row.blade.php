@@ -34,7 +34,7 @@
                 data-type="textarea" 
                 data-pk="{{ $t ? $t->id : 0 }}" 
                 data-url="{{ route('translation-manager.edit', $group) }}" 
-                data-title="{{ trans('translation-manager::panel.rows.edit') }}">{{ $t ? htmlentities($t->value, ENT_QUOTES, 'UTF-8', false) : '' }}</a>
+                data-title="{{ trans('translation-manager::panel.rows.edit') }}">{!! $t ? htmlentities($t->value, ENT_QUOTES, 'UTF-8', false) : '' !!}</a>
         </td>
     @endforeach
     @if($deleteEnabled)
