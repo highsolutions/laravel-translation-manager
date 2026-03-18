@@ -308,6 +308,9 @@ Do not use this inside of non-clickable elements (title attribute, alt attribute
 Changelog
 ---------
 
+1.5.0
+* Support Laravel 13.x
+
 1.4.0
 * Support Laravel 12.x
 
